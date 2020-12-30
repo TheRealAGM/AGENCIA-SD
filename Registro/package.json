@@ -1,0 +1,22 @@
+{
+  "name": "api-registro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "registro.js",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "express": "^4.17.1",
+    "jwt-simple": "^0.5.6",
+    "moment": "^2.29.1",
+    "mongojs": "^3.1.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon registro.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aaron Gimenez Mendez",
+  "license": "ISC"
+}
