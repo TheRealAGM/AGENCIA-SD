@@ -82,7 +82,7 @@ app.get('/api/:colecciones', (req, res, next) => {
             let param = req.query;
         
             if(JSON.stringify(param) == '{}'){
-                req.collection.find((err, elementos) => {
+                req.collection.find({Estado: 'no reservado'},(err, elementos) => {
                     if (err) return next(err);
             
                     console.log(elementos);
@@ -96,14 +96,14 @@ app.get('/api/:colecciones', (req, res, next) => {
             else{
                 const queCiudad = req.query.Ciudad;
         
-                req.collection.findOne({Ciudad: queCiudad},(err, elemento) => {
+                req.collection.find({Ciudad: queCiudad,Estado: 'no reservado'},(err, elemento) => {
                     if (err) return next(err);
         
                     //console.log(elemento);
                     res.json({
                         result: 'OK',
                         colecciones: queColeccion,
-                        elemento: elemento
+                        elementos: elemento
                     });
                 });
             }

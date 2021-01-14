@@ -82,7 +82,7 @@ app.get('/api/:colecciones', (req, res, next) => {
         console.log(parametros);
     
         if(JSON.stringify(parametros) == '{}'){
-            req.collection.find((err, elementos) => {
+            req.collection.find({Estado: 'no reservado'},(err, elementos) => {
                 if (err) return next(err);
         
                 console.log(elementos);
@@ -97,7 +97,7 @@ app.get('/api/:colecciones', (req, res, next) => {
             const queDestino = req.query.Destino;
             const queOrigen = req.query.Origen;
     
-            req.collection.findOne({Origen: queOrigen, Destino: queDestino},(err, elemento) => {
+            req.collection.find({Origen: queOrigen, Destino: queDestino, Estado: 'no reservado'},(err, elemento) => {
                 if (err) return next(err);
     
                 //console.log(elemento);

@@ -81,7 +81,7 @@ app.get('/api/:colecciones', (req, res, next) => {
         let param = req.query;
     
         if(JSON.stringify(param) == '{}'){
-            req.collection.find((err, elementos) => {
+            req.collection.find({Estado: 'no reservado'},(err, elementos) => {
                 if (err) return next(err);
         
                 console.log(elementos);
@@ -93,9 +93,9 @@ app.get('/api/:colecciones', (req, res, next) => {
             });
         }
         else{
-            const queEstado = req.query.Estado;
+            const queCiudad = req.query.Ciudad;
     
-            req.collection.findOne({Estado: queEstado},(err, elemento) => {
+            req.collection.find({Estado: 'no reservado',Ciudad: queCiudad},(err, elemento) => {
                 if (err) return next(err);
     
                 //console.log(elemento);
@@ -185,7 +185,7 @@ app.delete('/api/:colecciones/:id', auth, (req, res, next) => {
 });
 
 https.createServer( OPTIONS_HTTPS, app).listen(port, () => {
-    console.log(`SECURE WS API REST CRUD con DB ejecutandose en https://localhost:${port}/api/:colecciones/:id`);
+    console.log(`SECURE WS API REST Hotel con DB ejecutandose en https://localhost:${port}/api/:colecciones/:id`);
 });
 
 // app.listen(port, () => {

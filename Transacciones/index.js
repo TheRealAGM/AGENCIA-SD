@@ -167,7 +167,7 @@ app.put('/api/Transacciones/prereservarCoche', auth, (req, res, next) => {
     const idElemento = elemento.Elemento;
     console.log(elemento);
     console.log(idElemento);
-    let reservado = { estado : 'prereservado'};
+    let reservado = { Estado : 'prereservado'};
     let URLCoche = `${URL_coches}/${idElemento}`;
     console.log(URLCoche);
     const queToken = req.headers.authorization.split(" ")[1];
@@ -183,7 +183,7 @@ app.put('/api/Transacciones/prereservarCoche', auth, (req, res, next) => {
                         })
     .then( resp => resp.json() )
     elemento = {
-            Estado_elemento:'El vuelo ' + idElemento +' esta en prereserva',
+            Estado_elemento:'El coche ' + idElemento +' esta en prereserva',
             Pago: 'Pendiente'
     }
 
@@ -199,7 +199,7 @@ app.put('/api/Transacciones/prereservarCoche', auth, (req, res, next) => {
                 Estado_Transaccion: req.body.Estado_Transaccion,
                 Inicio: req.body.Inicio,
                 Elemento: req.body.Elemento,
-                Estado_elemento:'El vehiculo ' + idElemento +' esta en prereserva',
+                Estado_elemento:'El coche ' + idElemento +' estuvo en prereserva',
                 Pago: 'Pendiente de pago'
             };
             res.json({
@@ -227,7 +227,7 @@ app.put('/api/Transacciones/prereservarVuelo', auth, (req, res, next) => {
                         })
     .then( resp => resp.json() )
     elemento = {
-            Estado_elemento:'El vuelo ' + idElemento +' esta en prereserva',
+            Estado_elemento:'El vuelo ' + idElemento +' estuvo en prereserva',
             Pago: 'Pendiente'
     }
 
@@ -243,7 +243,7 @@ app.put('/api/Transacciones/prereservarVuelo', auth, (req, res, next) => {
                 Estado_Transaccion: req.body.Estado_Transaccion,
                 Inicio: req.body.Inicio,
                 Elemento: req.body.Elemento,
-                Estado_elemento:'El vuelo ' + idElemento +' esta en prereserva',
+                Estado_elemento:'El vuelo ' + idElemento +' estuvo en prereserva',
                 Pago: 'Pendiente'
             };
             res.json({
@@ -271,7 +271,7 @@ app.put('/api/Transacciones/prereservarHotel', auth, (req, res, next) => {
                         })
     .then( resp => resp.json() )
     elemento = {
-            Estado_elemento:'El hotel ' + idElemento +' esta en prereserva',
+            Estado_elemento:'El hotel ' + idElemento +' estuvo en prereserva',
             Pago: 'Pendiente'
     }
 
@@ -287,7 +287,7 @@ app.put('/api/Transacciones/prereservarHotel', auth, (req, res, next) => {
                 Estado_Transaccion: req.body.Estado_Transaccion,
                 Inicio: req.body.Inicio,
                 Elemento: req.body.Elemento,
-                Estado_elemento:'El hotel ' + idElemento +' esta en prereserva',
+                Estado_elemento:'El hotel ' + idElemento +' estuvo en prereserva',
                 Pago: 'Pendiente'
             };
             res.json({
@@ -330,6 +330,7 @@ app.put('/api/Transacciones/pagarCoche', auth, (req, res, next) => {
 
             
             elemento = {
+                Estado_Transaccion: 'Fin', 
                 Pago: 'Completado',
                 Estado_Final: 'Coche Reservado'
             };
@@ -431,6 +432,7 @@ app.put('/api/Transacciones/pagarVuelo', auth, (req, res, next) => {
 
             
             elemento = {
+                Estado_Transaccion: 'Fin', 
                 Pago: 'Completado',
                 Estado_Final: 'Vuelo Reservado'
             };
@@ -529,6 +531,7 @@ app.put('/api/Transacciones/pagarHotel', auth, (req, res, next) => {
 
             
             elemento = {
+                Estado_Transaccion: 'Fin', 
                 Pago: 'Completado',
                 Estado_Final: 'Hotel Reservado'
             };

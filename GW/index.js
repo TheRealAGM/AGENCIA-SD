@@ -87,7 +87,7 @@ app.get('/api/coches', (req, res, next) => {
     if(JSON.stringify(parametros) == '{}'){
          queURL = `${URL_coches}`;
     }else{
-        queURL = `${URL_coches} ?Ciudad=${queCiudad}`;
+        queURL = `${URL_coches}?Ciudad=${queCiudad}`;
     }
 
     fetch(queURL)
@@ -345,7 +345,8 @@ app.post('/api/transacciones/reservarCoche/:id', auth, (req, res, next) => {
                         {
                             res.status(200).json(
                                 {
-                                    result: 'Reserva realizada correctamente'
+                                    result: 'Reserva realizada correctamente',
+                                    transaccion: mijson.result
                                 }
                             )
                         }
@@ -353,7 +354,8 @@ app.post('/api/transacciones/reservarCoche/:id', auth, (req, res, next) => {
                         {
                             res.status(400).json(
                                 {
-                                    result: 'Error al realizar la reserva'
+                                    result: 'Error al realizar la reserva',
+                                    transaccion: mijson.result
                                 }
                             )
                         }
@@ -411,7 +413,8 @@ app.post('/api/transacciones/reservarVuelo/:id', auth, (req, res, next) => {
                         {
                             res.status(200).json(
                                 {
-                                    result: 'Reserva realizada correctamente'
+                                    result: 'Reserva realizada correctamente',
+                                    transaccion: mijson.result
                                 }
                             )
                         }
@@ -419,7 +422,8 @@ app.post('/api/transacciones/reservarVuelo/:id', auth, (req, res, next) => {
                         {
                             res.status(400).json(
                                 {
-                                    result: 'Error al realizar la reserva'
+                                    result: 'Error al realizar la reserva',
+                                    transaccion: mijson.result
                                 }
                             )
                         }
@@ -477,7 +481,8 @@ app.post('/api/transacciones/reservarHotel/:id', auth, (req, res, next) => {
                         {
                             res.status(200).json(
                                 {
-                                    result: 'Reserva realizada correctamente'
+                                    result: 'Reserva realizada correctamente',
+                                    transaccion: mijson.result
                                 }
                             )
                         }
@@ -485,7 +490,8 @@ app.post('/api/transacciones/reservarHotel/:id', auth, (req, res, next) => {
                         {
                             res.status(400).json(
                                 {
-                                    result: 'Error al realizar la reserva'
+                                    result: 'Error al realizar la reserva',
+                                    transaccion: mijson.result
                                 }
                             )
                         }
